@@ -15,31 +15,12 @@
 </p>
 
 
-<button class="button" onclick="$('#target').toggle();">Add an address</button>
-<div id="target" style="display: none">
-<%= form_for(@addr, as: :addresse, url: users_path(newAddr), html: { method: :post }) do |a| %>
-  <%= a.select :typeAddresse, Addresse.typeAddresses.keys.to_a %><br>
-  <%= a.label :number %>:
-  <%= a.text_field :number %><br />
-   <%= a.label :street %>:
-  <%= a.text_field :street %><br />
-  <%= a.label :zipcode %>:
-  <%= a.text_field :zipcode %><br />
-   <%= a.label :city %>:
-  <%= a.text_field :city %><br />  
-  <%= a.label :country %>:
-  <%= a.text_field :country %><br />
-  <%= a.submit "Add" %>
-<% end %>
+<button class="button" onclick="$('#targetAdd').toggle();">Add an address</button>
+<div id="targetAdd" style="display: none">
+<%= render 'form' %>
 </div> 
 
-<h2>Addresses</h2>
-<div id="addresses">
-<%=@addresses.each do |addresse| %>
-<%= div_for addresse do %>
-<strong>Addresse <%=addresse.typeAddresse %> :</strong><br>
-<p><%=addresse.number %> <%=addresse.street %><br>
-<%=addresse.zipcode%> <%=addresse.city %><br>
-<%=addresse.country%><br></p>
-<% end %>
-<% end %>
+<button class="button" onclick="$('#targetView').toggle();">View addresses</button>
+<div id="targetView" style="display: none">
+<%= render 'addrlist' %>
+</div> 
