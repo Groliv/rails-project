@@ -1,4 +1,4 @@
-<%= form_for(@addresse, as: :addresse, url: user_addresses_path(current_user.id), html: { method: :post }) do |a| %>
+<%= bootstrap_form_for(@addresse, as: :addresse, url: user_addresses_path(current_user.id), html: { method: :post }) do |a| %>
   <% if @addresse.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@addresse.errors.count, "error") %> prohibited this addresse from being saved:</h2>
@@ -11,15 +11,10 @@
     </div>
   <% end %>
   <%= a.select :typeAddresse, Addresse.typeAddresses.keys.to_a %><br>
-  <%= a.label :number %>:
   <%= a.text_field :number %><br />
-   <%= a.label :street %>:
   <%= a.text_field :street %><br />
-  <%= a.label :zipcode %>:
   <%= a.text_field :zipcode %><br />
-   <%= a.label :city %>:
   <%= a.text_field :city %><br />  
-  <%= a.label :country %>:
   <%= a.text_field :country %><br />
   <%= a.submit "Add Address" %>
 <% end %>

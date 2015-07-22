@@ -14,13 +14,12 @@
 <%= @user.email %>
 </p>
 
-
-<button class="button" onclick="$('#targetAdd').toggle();">Add an address</button>
-<div id="targetAdd" style="display: none">
-<%= render 'form' %>
-</div> 
-
-<button class="button" onclick="$('#targetView').toggle();">View addresses</button>
+<button class="btn btn-default" onclick="$('#targetView').toggle();">View addresses</button>
 <div id="targetView" style="display: none">
 <%= render 'addrlist' %>
+</div> 
+
+<button class="btn btn-default" onclick="$('#targetAdd').toggle();">Add an address</button>
+<div id="targetAdd" style="display: none">
+<%= render 'form' %>
 </div> 

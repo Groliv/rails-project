@@ -1,13 +1,13 @@
 <h2>Addresses</h2>
 <div id="addresses">
-	<%=@addresses.each do |addresse| %>
+	<%@addresses.each do |addresse| %>
 		<%= div_for addresse do %>
 		<strong>Addresse <%=addresse.typeAddresse %> :</strong><br>
 		<p><%=addresse.number %> <%=addresse.street %><br>
 			<%=addresse.zipcode%> <%=addresse.city %><br>
 			<%=addresse.country%><br></p>
-			<p><%= link_to 'Edit', edit_user_address_path(addresse.id, addresse.user_id) %></p>
-			<p><%= link_to 'Delete', user_address_path(addresse.id, addresse.user_id), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+			<p><%= link_to 'Edit', user_address_path(addresse.user_id, addresse.id) %></p>
+			<p><%= link_to 'Delete', user_address_path(addresse.user_id, addresse.id), method: :delete, data: { confirm: 'Are you sure?' } %></p>
 		<% end -%>
 	<% end -%>
 </div>
