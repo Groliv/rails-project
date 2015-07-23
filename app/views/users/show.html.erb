@@ -1,4 +1,4 @@
-
+<div class="container">
 <p>
 <strong>Firstname:</strong>
 <%= @user.firstname %>
@@ -14,12 +14,27 @@
 <%= @user.email %>
 </p>
 
+<p>
+<strong>Role:</strong>
+<% if true == @user.admin %>Admin <% end %>
+<% if false == @user.admin %>User <% end %>
+</p>
+
+<% if current_user.admin? && !@user.admin? %>
+	<%= bootstrap_form_for(@user, url: giveRight_user_path(@user)) do |u| %>
+    	<%= u.submit "Add Right" %>
+ 	<% end %>
+ <% end %>
+
 <button class="btn btn-default" onclick="$('#targetView').toggle();">View addresses</button>
 <div id="targetView" style="display: none">
 <%= render 'addrlist' %>
 </div> 
-
+<% if @user == current_user %>
 <button class="btn btn-default" onclick="$('#targetAdd').toggle();">Add an address</button>
 <div id="targetAdd" style="display: none">
 <%= render 'form' %>
 </div> 
+<% end %>
+
+</div>

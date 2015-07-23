@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	before_action :authenticate_user!
-	before_action :set_user, only: [:show]
+	before_action :set_user, only: [:show, :giveRight]
 	respond_to :html, :json
 
 	def show
@@ -10,6 +10,14 @@ class UsersController < ApplicationController
 
 	def index
   		@users = User.all
+	end
+
+
+	def giveRight
+		p params.inspect
+		@user.admin = true
+		@user.save
+		redirect_to @user
 	end
 
 	private

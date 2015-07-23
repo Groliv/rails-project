@@ -7,4 +7,10 @@ class User < ActiveRecord::Base
  	has_many :addresses, dependent: :destroy
  	has_many :products, dependent: :destroy
  	accepts_nested_attributes_for :addresses, allow_destroy: true
+
+
+ 	def admin?
+    	admin == true
+  	end
+
 end

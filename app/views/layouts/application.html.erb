@@ -7,19 +7,33 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= render "layouts/navbar" %>
-<% if notice.present? %>
-<div class="alert alert-success">
-<p class="notice"><%= notice %></p>
+<div class="container-fluid"> 
+	<%= render "layouts/header" %>
+	<%= render "layouts/navbar" %>
+	<% if notice.present? %>
+		<div class="alert alert-success">
+		<p class="notice"><%= notice %></p>
+		</div>
+	<% end %>
+	<% if alert.present? %>
+		<div class="alert alert-danger">
+		<p class="alert"><%= alert %></p>
+		</div>
+	<% end %>
+	
+	<div class="row">
+		<div class="col-xs-12 col-sm-8 col-lg-10">
+			<section>
+				<%= yield %>
+			</section>
+		</div>
+		<div class="col-xs-12 col-lg-2">
+			<%= render "layouts/sidebar" %>
+		</div>
+	</div>
+	<%= render "layouts/footer" %>
 </div>
-<% end %>
-<% if alert.present? %>
-<div class="alert alert-danger">
-<p class="alert"><%= alert %></p>
-</div>
-<% end %>
 
-<%= yield %>
 
 </body>
 </html>

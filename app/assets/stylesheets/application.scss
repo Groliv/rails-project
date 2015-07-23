@@ -17,6 +17,9 @@
 @import 'rails_bootstrap_forms';
 @import 'devise_bootstrap_views';
 @import 'home.scss';
+@import 'addresse.scss';
+@import 'users.scss';
+@import 'products.scss';
 @import 'scaffolds.scss';
 
 
@@ -24,4 +27,44 @@
 body{
 	max-width: 1024px;
 	margin: 0 auto;
+	padding: 0;
 }
+
+footer{
+	background-color: grey;
+	display:block;
+	width:100%;
+	height:100px;
+}
+
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+    width: 100%;
+    margin: auto;
+}
+
+.item {
+  	background-color: lightgrey;
+  	width:100%;
+  	height:175px;
+}
+
+.container{
+	padding : 0;
+	max-width: 100%;
+	top:0;
+	margin: 0 auto;
+}
+
+section{
+}
+
+aside{
+	background-color:lightgrey;
+}
+
+.widget{
+	display:block;
+	height : 650px;
+}
+

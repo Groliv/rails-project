@@ -11,11 +11,11 @@ class ProductPolicy < ApplicationPolicy
   	end
 
   	def create?
-    	@user.present? && @product.user == @user 
+    	@user.present? 
   	end
 
   	def delete?
-    	@user.present? && @product.user == @user 
+    	@user.present? && (@product.user == @user || @user.admin? )
   	end
 
 end

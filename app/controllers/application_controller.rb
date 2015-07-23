@@ -18,8 +18,8 @@ class ApplicationController < ActionController::Base
 
 	protected 
 	def configure_permitted_parameters
-		devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :firstname , :lastname, :addresses_attributes => [:typeAddresse, :number, :street, :zipcode, :city, :country] )}
-		devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:email, :password,  :firstname , :lastname,:addresses_attributes => [:typeAddresse, :number, :street, :zipcode, :city, :country])}
+		devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :firstname, :lastname, :admin, :addresses_attributes => [:typeAddresse, :number, :street, :zipcode, :city, :country] )}
+		devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:email, :password, :firstname, :lastname, :admin, :addresses_attributes => [:typeAddresse, :number, :street, :zipcode, :city, :country])}
 	end
 
 	private

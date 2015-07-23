@@ -6,12 +6,15 @@ class UserPolicy < ApplicationPolicy
 		@userm = userm
 	end
 
+	def giveRight?
+		@userp.admin?
+	end
 
 	def update?
     	@userp.present?
   	end
 
   	def delete?
-    	@userp.present? || @userp.admin? 
+    	@userp.present? || @userp.admin?
   	end
 end
