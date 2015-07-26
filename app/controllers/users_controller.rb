@@ -4,14 +4,15 @@ class UsersController < ApplicationController
 	respond_to :html, :json
 
 	def show
-  		@addresses = Addresse.where("user_id = ?", @user.id).all
-  		@addresse = Addresse.new
+		@addresses = Addresse.where("user_id = ?", @user.id).all
+		@addresse = Addresse.new
+		@ratings = Rating.where({"ratable_id": @user.id, "ratable_type": User}).all
+		@rating = Rating.new
 	end
 
 	def index
-  		@users = User.all
+		@users = User.all
 	end
-
 
 	def giveRight
 		p params.inspect
@@ -21,8 +22,7 @@ class UsersController < ApplicationController
 	end
 
 	private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
+	def set_user
+		@user = User.find(params[:id])
+	end
 end

@@ -5,14 +5,18 @@
     </div>
     <div>
       <ul class="nav navbar-nav">
-        <li><%= link_to "products", products_path, :method => :get %></li>
-        <li><%= link_to "users", users_path, :method => :get %></li> 
+        <li><%= link_to "Products", products_path, :method => :get %></li>
+        <li><%= link_to "Users", users_path, :method => :get %></li> 
         <% if user_signed_in? %>
-        <li><a href="#">Yours products</a></li> 
+        <li><%= link_to "Your sellings", product_path(current_user), :method => :get %></li> 
+        <li><%= link_to "Your buyings", product_path(current_user), :method => :get %></li> 
+        <li><%= link_to "Your bidings", product_path(current_user), :method => :get %></li> 
         <% end %>
       </ul>
         <ul class="nav navbar-nav navbar-right"> 
         <% if user_signed_in? %>
+        <li><%= link_to ('<span class="glyphicon glyphicon-user"></span>'+current_user.firstname+'').html_safe, user_path(current_user.id), :method => :get , class: 'btn btn-default' %></li>
+        <li></li>
           <li><%= link_to '<span class="glyphicon glyphicon-log-out white"></span> Sign Out'.html_safe, destroy_user_session_path, :method => :delete, class: 'btn btn-default' %></li>
         <% else %>
           <li><%= link_to '<span class="glyphicon glyphicon-log-in"></span> Sign In'.html_safe, new_user_session_path, :method => :get , class: 'btn btn-default' %></li>

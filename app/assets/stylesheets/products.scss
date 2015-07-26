@@ -1,3 +1,17 @@
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.prodlist{
+	 background-color:white;
+	 padding: 10px;
+	 box-shadow: 0 0 12px grey;
+}
+
+.btn-primary a, .btn-danger a, .btn-success a{
+	color: white !important;
+}
+
+.btn-primary, .btn-danger, .btn-success {
+	color: white !important;
+}

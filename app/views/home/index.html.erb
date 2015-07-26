@@ -1,8 +1,23 @@
 <% if user_signed_in? %>
-	<h3>you have succesfully signed in</h3>
-	<%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
+	<h3>Welcome <%= current_user.firstname %></h3>
+	<% if current_user.ratings.count != 0 %>
+	<h4><strong>Your rating as seller: </strong><%= current_user.avgrate %></h4>
+	<% end -%>
 <% else %>
-	<h1> Welcom to rails Braderie</h1>
-	<%= link_to "Sign In", new_user_session_path, :method => :get %>
-	<%= link_to "Sign up", new_user_registration_path, :method => :get %>
-<% end %>
+	<h1 style="text-align:center; color:maroon; font-weight:bolder;"> Welcom to rails Braderie</h1>
+<% end -%>
+
+<div class="container-fluid">
+	<h3>Our products with best ratings</h3>
+  		<div class="row" >
+			<% @products[0,8].each do |p| %>
+             <div class="col-md-4 ">
+             	<div class="prodlist"><h4><%=p.title -%></h4>
+             	Seller : <%=p.user.firstname %><br>
+             	Price :<%= p.price -%><br>
+             	Rating :<%= p.avgrate -%><br>
+             	<td><%= link_to 'Show', p, :class=>"btn btn-primary btn-xs" %></td>
+             </div></div>
+             <% end -%>
+		</div>
+</div>	

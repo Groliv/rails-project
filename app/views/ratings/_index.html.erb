@@ -1,0 +1,31 @@
+<h3>Advice</h3>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Rate</th>
+      <th>Author</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @ratings.count == 0 %>
+      <tr>
+        <td colspan="4">
+          No advice found.  Click the button above to add a new one.
+        </td>
+      </tr>
+    <% else %>
+      <% @ratings.each do |rating| %>
+        <tr>
+          <td><%= rating.title %></td>
+          <td><div id="star"></div></td>
+          <td><%= rating.rate %></td>
+          <td><%= rating.user.firstname %></td>
+          <td><%= link_to "Edit", edit_user_rating_path(rating.user_id, rating.id), class: "btn btn-default btn-xs" %>
+          <%= link_to "Show", user_rating_path(rating.user_id, rating.id), class: "btn btn-default btn-xs" %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

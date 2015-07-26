@@ -9,6 +9,10 @@
 <%= @user.lastname %>
 </p>
 
+<p><strong>Rating:</strong>
+<%= @user.avgrate %></p>
+<p>
+
 <p>
 <strong>Email:</strong>
 <%= @user.email %>
@@ -29,11 +33,24 @@
 <button class="btn btn-default" onclick="$('#targetView').toggle();">View addresses</button>
 <div id="targetView" style="display: none">
 <%= render 'addrlist' %>
-</div> 
+</div>
+
 <% if @user == current_user %>
 <button class="btn btn-default" onclick="$('#targetAdd').toggle();">Add an address</button>
 <div id="targetAdd" style="display: none">
 <%= render 'form' %>
+</div> 
+<% end %>
+
+<button class="btn btn-default" onclick="$('#targetAddComment').toggle();">View advice</button>
+<div id="targetAddComment" style="display: none">
+<%= render './ratings/index' %>
+</div> 
+
+<% if @user != current_user %>
+<button class="btn btn-default" onclick="$('#targetAdd').toggle();">Add an advice</button>
+<div id="targetAdd" style="display: none">
+<%= render './ratings/form' %>
 </div> 
 <% end %>
 

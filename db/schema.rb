@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150722133150) do
+ActiveRecord::Schema.define(version: 20150723001550) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id",      limit: 4
@@ -38,6 +38,19 @@ ActiveRecord::Schema.define(version: 20150722133150) do
   end
 
   add_index "products", ["user_id"], name: "index_products_on_user_id", using: :btree
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer  "user_id",      limit: 4
+    t.string   "title",        limit: 255
+    t.text     "comment",      limit: 65535
+    t.integer  "rate",         limit: 4
+    t.integer  "ratable_id",   limit: 4
+    t.string   "ratable_type", limit: 255
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "ratings", ["user_id"], name: "index_ratings_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "",    null: false

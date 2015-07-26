@@ -5,7 +5,18 @@
   <%= @product.title %>
 </p>
 
-<p>
+<p><strong>Seller:</strong>
+<%= @product.user.firstname %>
+</p>
+
+<p><strong>Created at:</strong>
+<%= @product.created_at %>
+</p>
+
+<p><strong>Rating:</strong>
+<%= @product.avgrate %>
+</p>
+
   <strong>Description:</strong>
   <%= @product.description %>
 </p>
@@ -20,5 +31,18 @@
   <%= @product.image_url %>
 </p>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<button class="btn btn-default" onclick="$('#targetAddComment').toggle();">View advice</button>
+<div id="targetAddComment" style="display: none">
+<%= render './ratings/index' %>
+</div> 
+
+<% if @product.user != current_user %>
+<button class="btn btn-default" onclick="$('#targetAdd').toggle();">Add an advice</button>
+<div id="targetAdd" style="display: none">
+<%= render './ratings/formproduct' %>
+</div> 
+<% end %>
+<% if user_signed_in? %>
+<%= link_to 'Edit', edit_product_path(@product), class:"btn btn-default" %> |
+<% end -%>
+<%= link_to 'Back', products_path, class:"btn btn-default" %>
