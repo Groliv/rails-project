@@ -9,7 +9,7 @@
         <li><%= link_to "Categories", categories_path, :method => :get %></li>
         <li><%= link_to "Users", users_path, :method => :get %></li> 
         <% if user_signed_in? && current_user.products.count != 0 %>
-        <li><%= link_to "Your sellings", product_path(current_user), :method => :get %></li> 
+        <li><%= link_to "Your sellings", products_path(current_user), :method => :get %></li> 
         <li><%= link_to "Your buyings", product_path(current_user), :method => :get %></li> 
         <li><%= link_to "Your bidings", product_path(current_user), :method => :get %></li> 
         <% end %>

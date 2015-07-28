@@ -13,7 +13,7 @@
   <div>
       <div class="field">
           <%= f.collection_select(:category, @categories, :id, :name_for_selects, 
-            {:prompt => "Select category" }, selected: @product.category.name_for_selects, class: "form-control")  %>
+            {:prompt => "Select category" }, selected: @product.category, class: "form-control")  %>
       </div>
       <div class="field">
         <%= f.text_field :title %>

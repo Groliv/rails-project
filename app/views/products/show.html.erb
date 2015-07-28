@@ -2,8 +2,7 @@
   <%= @product.title %>
 </h3>
 
-<div class="meta"> <%= @product.category.name %> - <%= @product.created_at.strftime("created at %B %d at %I:%M %p") %> by <strong><%= @product.user.
-firstname %></strong></div>
+<div class="meta"> <%= @product.category.name %> - <%= @product.created_at.strftime("created at %B %d at %I:%M %p") %> by <strong><%= @product.user.firstname %></strong></div>
 
 <div class="table_price_rating">
 <div class="price">
@@ -27,13 +26,13 @@ firstname %></strong></div>
 </p>
 </div>
 
-<button class="btn btn-default" onclick="$('#targetAddComment').toggle();">View advice</button>
+<button class="btn btn-default" onclick="$('#targetAddComment').toggle();">View notice</button>
 <div id="targetAddComment" style="display: none">
 <%= render './ratings/index' %>
 </div> 
 
 <% if @product.user != current_user %>
-<button class="btn btn-default" onclick="$('#targetAdd').toggle();">Add an advice</button>
+<button class="btn btn-default" onclick="$('#targetAdd').toggle();">Add an notice</button>
 <div id="targetAdd" style="display: none">
 <%= render './ratings/formproduct' %>
 </div> 

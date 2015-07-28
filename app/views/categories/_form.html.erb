@@ -1,4 +1,4 @@
-<%= bootstrap_form_for(@category) do |f| %>
+<%= bootstrap_form_for(@category, html: {autocomplete:'off'}) do |f| %>
   <% if @category.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-   <%= f.text_field :name, :as => :autocomplete, :source_query => autocomplete_category_name_categories_path %>
+   <%= f.text_field :name %>
   <div class="field">
     <%= f.collection_select :parent_id, Category.arrange_as_array({:order => 'name'}, @category.possible_parents) , :id, :name_for_selects, :include_blank => true %>
   </div> 

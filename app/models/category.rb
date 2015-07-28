@@ -9,12 +9,10 @@ class Category < ActiveRecord::Base
 	def self.arrange_as_array(options={}, hash=nil)                                                                                                                                                            
 		hash ||= arrange(options)
 		arr = []
-		puts hash
 		hash.each do |node, children|
 			arr << node
 			arr += arrange_as_array(options, children) unless children.nil?
 		end
-		puts arr
     	arr
 	end
 
