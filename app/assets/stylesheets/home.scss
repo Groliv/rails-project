@@ -3,10 +3,22 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+.widget{
+	display:block;
+	height:650px;
+}
+
+.title_widget{
+	font-size: 160%;
+	font-weight: bolder;
+	color: lightgrey;
+	padding-bottom:15px;
+}
+
+
 #submenu{
 	width:100%;
 	display: block;
-	color:grey
 }
 
 #submenu ul{
@@ -17,9 +29,29 @@
 	list-style:none;
 	font-size:15px;
 	font-weight:bold;
+	display:block;
+	width:100%;
 }
 
 .widget-cat{
 	border-bottom: thin solid lightgrey;
 	margin-bottom: 30px;
 }
+
+#submenu ul li a{
+	color:#286090;
+	padding:3px 5px;
+	width:100%;
+}
+
+#submenu ul li a:hover, #submenu ul li a:active{
+	font-size:18px;
+	list-style:none;
+	text-decoration:none;
+	background-color: #286090;
+	color:white;
+	padding:3px 5px;
+	display:block;
+	width:100%;
+}
+

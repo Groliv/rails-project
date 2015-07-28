@@ -22,12 +22,19 @@
 @import 'products.scss';
 @import 'scaffolds.scss';
 
-
+.dropdown:hover .dropdown-menu {
+display: block;
+}
 
 body{
 	max-width: 1024px;
 	margin: 0 auto;
 	padding: 0;
+}
+
+.navbar-right > li > a {
+	padding: 5px 10px;
+	margin-right: 10px;
 }
 
 footer{
@@ -64,15 +71,4 @@ aside{
 	padding-left:20px;
 }
 
-.widget{
-	display:block;
-	height:650px;
-}
-
-.title_widget{
-	font-size: 200%;
-	font-weight: bolder;
-	color: lightgrey;
-	padding-bottom:15px;
-}
 

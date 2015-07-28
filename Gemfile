@@ -10,8 +10,7 @@ gem 'bootstrap-sass', '~> 3.3.5'
 gem 'bootstrap_form', '~> 2.3.0'
 gem 'devise-bootstrap-views'
 gem 'sass-rails', '~> 5.0'
-gem 'simple_form'
-gem 'bootstrap3_autocomplete_input'
+
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

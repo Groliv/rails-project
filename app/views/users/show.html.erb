@@ -59,13 +59,13 @@
 </div> 
 <% end %>
 
-<button class="btn btn-default" onclick="$('#targetAddComment').toggle();">View advice</button>
+<button class="btn btn-default" onclick="$('#targetAddComment').toggle();">View notice</button>
 <div id="targetAddComment" style="display: none">
 <%= render './ratings/index' %>
 </div> 
 
 <% if @user != current_user %>
-<button class="btn btn-default" onclick="$('#targetAdd').toggle();">Add an advice</button>
+<button class="btn btn-default" onclick="$('#targetAdd').toggle();">Add an notice</button>
 <div id="targetAdd" style="display: none">
 <%= render './ratings/form' %>
 </div> 

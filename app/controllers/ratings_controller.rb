@@ -22,7 +22,7 @@ class RatingsController < ApplicationController
     authorize @rating
 
     if @rating.save
-      redirect_to context_url(context), notice: "The advice has been successfully created."
+      redirect_to context_url(context), notice: "The notice has been successfully created."
     end
   end
 
@@ -35,7 +35,7 @@ class RatingsController < ApplicationController
       @context = context
       respond_to do |format|
       if @rating.update(rating_params)
-        format.html { redirect_to context_url(context), notice: 'Advice was successfully updated.' }
+        format.html { redirect_to context_url(context), notice: 'Notice was successfully updated.' }
         format.json { render :show, status: :ok, location: @rating }
       else
         format.html { render :edit }

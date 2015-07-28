@@ -1,10 +1,10 @@
 <aside>
 	<div class="widget-cat" style="background-color:white">
-		<div class="title_widget">Categories</div>
-		 <div id="submenu">
+		<div class="title_widget">Product categories</div>
+		 <div id="submenu" >
 			  <ul >
 			  <% Category.roots.each do |category| %>
-    			<li ><%= link_to category.name, category %>
+    			<li ><%= link_to category.name_for_selects, category %>
     				<%= render './categories/submenu_cats', categories: category.children if category.children.present? %>
 				</li>		
 			<% end -%>
