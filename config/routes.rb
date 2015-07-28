@@ -1,18 +1,22 @@
 Rails.application.routes.draw do
 
+  resources :categories do
+    get :autocomplete_category_name, :on => :collection
+  end
+
   devise_for :users
   resources :users, :only => [:show, :index] do
     patch "giveRight", on: :member
     resources :addresses
     resources :ratings
   end
+
   resources :products do
     resources :ratings
   end
 
   get 'products/:id/:user_id' => 'products#indexbyuser'
   get 'products/:id/current_user_id' => 'products#indexbycurrent'
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

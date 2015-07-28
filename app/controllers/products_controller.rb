@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:edit, :update, :destroy]
 
 
   # GET /products
@@ -19,18 +19,21 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+      @product = Product.find(params[:id])
       @ratings = Rating.where({"ratable_id": @product.id, "ratable_type": Product}).all
       @rating = Rating.new
   end
 
   # GET /products/new
   def new
+    @categories = Category.all
     @product = Product.new
     authorize @product
   end
 
   # GET /products/1/edit
   def edit
+      @categories = Category.all
       authorize @product
   end
 
@@ -38,7 +41,7 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
-    @product.user_id = current_user.id
+    @product.user = current_user
     authorize @product
     respond_to do |format|
       if @product.save
@@ -80,8 +83,8 @@ class ProductsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
-      if Product.where(:user_id => current_user.id).count == 0
-        redirect_to user_url, flash: {:notice => "You have no product registered, create the first !"}
+      if user_signed_in? && Product.where(:user_id => current_user.id).count == 0
+        redirect_to user_url, flash: {:notice => "You have no product registered, create the first !"}        
       else
         @product = Product.find(params[:id])
       end
@@ -89,6 +92,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:user_id, :title, :description, :price, :image_url)
+      params.require(:product).permit(:user_id, :title, :description, :price, :image_url, :category_id)
     end
 end

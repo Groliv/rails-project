@@ -1,0 +1,8 @@
+ <ul >
+  <% categories.each do |sub_cat| %>
+    <li ><%= link_to_unless_current sub_cat.name, sub_cat%>
+        <%= render './categories/submenu_cats', categories: sub_cat.children if sub_cat.children.present?%>
+    </li>
+  <% end %>
+</ul>
+

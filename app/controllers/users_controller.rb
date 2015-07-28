@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 	respond_to :html, :json
 
 	def show
+		@prods = @user.products.all
 		@addresses = Addresse.where("user_id = ?", @user.id).all
 		@addresse = Addresse.new
 		@ratings = Rating.where({"ratable_id": @user.id, "ratable_type": User}).all

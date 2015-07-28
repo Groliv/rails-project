@@ -9,7 +9,11 @@ class ApplicationController < ActionController::Base
 	respond_to :html, :json
 
 	def after_sign_in_path_for(resource)
-  		product_path(current_user)
+		if current_user.products.count == 0
+			return
+		else
+  			product_path(current_user)
+  		end
 	end
 
 	def after_sign_out_path_for(resource_or_scope)

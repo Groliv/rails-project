@@ -1,16 +1,7 @@
-<% if user_signed_in? %>
-	<h3>Welcome <%= current_user.firstname %></h3>
-	<% if current_user.ratings.count != 0 %>
-	<h4><strong>Your rating as seller: </strong><%= current_user.avgrate %></h4>
-	<% end -%>
-<% else %>
-	<h1 style="text-align:center; color:maroon; font-weight:bolder;"> Welcom to rails Braderie</h1>
-<% end -%>
-
 <div class="container-fluid">
-	<h3>Our products with best ratings</h3>
+	<h3>Our products in the category : <%= @category.name %></h3>
   		<div class="row" >
-			<% @products[0,8].each do |p| %>
+			<% @prods[0,8].each do |p| %>
              <div class="col-md-4 ">
              	<div class="prodlist"><h4><%=p.title -%></h4>
              	Seller : <%=p.user.firstname %><br>
@@ -21,3 +12,8 @@
              <% end -%>
 		</div>
 </div>	
+
+
+
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>

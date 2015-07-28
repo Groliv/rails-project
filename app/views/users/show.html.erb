@@ -30,6 +30,23 @@
  	<% end %>
  <% end %>
 
+ <div class="container-fluid">
+ <% if @user.products.count != 0 %>
+	<h3>The products of : <%= @user.firstname %></h3>
+  		<div class="row" >
+			<% @prods[0,8].each do |p| %>
+             <div class="col-md-4 ">
+             	<div class="prodlist"><h4><%=p.title -%></h4>
+             	Category : <%=p.category %><br>
+             	Price :<%= number_to_currency(p.price, precision: 2)-%><br>
+             	Rating :<%= p.avgrate -%><br>
+             	<td><%= link_to 'More', p, :class=>"btn btn-primary btn-xs" %></td>
+             </div></div>
+             <% end -%>
+		</div>
+	<% end -%>	
+</div>	
+
 <button class="btn btn-default" onclick="$('#targetView').toggle();">View addresses</button>
 <div id="targetView" style="display: none">
 <%= render 'addrlist' %>

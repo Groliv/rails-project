@@ -4,7 +4,7 @@ class CreateRatings < ActiveRecord::Migration
 		t.belongs_to 	:user,		index:true
 		t.string  		:title
 		t.text			:comment
-		t.integer		:rate, default:0
+		t.integer		:score, 		default:0
 		t.integer		:ratable_id
 		t.string 		:ratable_type
 

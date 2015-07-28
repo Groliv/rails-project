@@ -6,6 +6,7 @@
 	 background-color:white;
 	 padding: 10px;
 	 box-shadow: 0 0 12px grey;
+	 margin-top: 25px;
 }
 
 .btn-primary a, .btn-danger a, .btn-success a{
@@ -14,4 +15,46 @@
 
 .btn-primary, .btn-danger, .btn-success {
 	color: white !important;
+}
+
+.title_prod{
+	color: olive;
+	font-weight:bolder;
+	font-size:250%;
+}
+
+.meta{
+	color:maroon;
+}
+
+.rating{
+	background-color:olive; 
+	color:maroon; 
+	text-align:center; 
+	font-weight:bolder; 
+	padding:10px; 
+	border-radius: 5px; 
+	font-size:20px; 
+	max-height:40px; 
+	display:table-cell;
+}
+
+.price{
+	background-color:maroon; 
+	color:white; 
+	text-align:center; 
+	font-weight:bolder; 
+	padding:10px; 
+	border-radius: 5px; 
+	font-size:20px; 
+	max-height:40px; 
+	display:table-cell;
+}
+
+.table_price_rating{
+	display:table;
+	border-collapse:separate;
+	border-spacing:15px 0;
+	margin-top: 12px;
+	margin-bottom: 12px;	
 }

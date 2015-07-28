@@ -10,6 +10,8 @@ gem 'bootstrap-sass', '~> 3.3.5'
 gem 'bootstrap_form', '~> 2.3.0'
 gem 'devise-bootstrap-views'
 gem 'sass-rails', '~> 5.0'
+gem 'simple_form'
+gem 'bootstrap3_autocomplete_input'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -20,8 +22,11 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'devise'
 gem 'pundit'
 
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'ancestry'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

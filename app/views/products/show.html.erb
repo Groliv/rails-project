@@ -1,35 +1,31 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
+<h3 class="title_prod">
   <%= @product.title %>
-</p>
+</h3>
 
-<p><strong>Seller:</strong>
-<%= @product.user.firstname %>
-</p>
+<div class="meta"> <%= @product.category.name %> - <%= @product.created_at.strftime("created at %B %d at %I:%M %p") %> by <strong><%= @product.user.
+firstname %></strong></div>
 
-<p><strong>Created at:</strong>
-<%= @product.created_at %>
-</p>
-
-<p><strong>Rating:</strong>
+<div class="table_price_rating">
+<div class="price">
+  <%= number_to_currency(@product.price, precision: 2)  %>
+</div>
+<div class="rating">
+<strong>Rating:</strong>
 <%= @product.avgrate %>
-</p>
+</div>
+</div>
 
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
 
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
+ <strong>Description:</strong>
+ <%= @product.description %>
 
+
+<div class="image_prod">
 <p>
   <strong>Image url:</strong>
   <%= @product.image_url %>
 </p>
+</div>
 
 <button class="btn btn-default" onclick="$('#targetAddComment').toggle();">View advice</button>
 <div id="targetAddComment" style="display: none">

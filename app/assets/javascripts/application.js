@@ -12,7 +12,8 @@
 //
 //= require jquery
 //= require bootstrap-sprockets
+//= require bootstrap3-typeahead.min
+//= require bootstrap3-autocomplete-input.min
 //= require jquery_ujs
 //= require turbolinks
-//= require jquery.raty.js
 //= require_tree .

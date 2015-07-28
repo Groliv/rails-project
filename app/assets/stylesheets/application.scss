@@ -60,11 +60,19 @@ section{
 }
 
 aside{
-	background-color:lightgrey;
+	border-left: thin solid lightgrey;
+	padding-left:20px;
 }
 
 .widget{
 	display:block;
-	height : 650px;
+	height:650px;
+}
+
+.title_widget{
+	font-size: 200%;
+	font-weight: bolder;
+	color: lightgrey;
+	padding-bottom:15px;
 }
 

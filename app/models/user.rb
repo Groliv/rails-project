@@ -9,21 +9,22 @@ class User < ActiveRecord::Base
  	has_many :ratings, as: :ratable, dependent: :destroy
  	accepts_nested_attributes_for :addresses, allow_destroy: true
 
+  def admin?
+    admin == true
+  end
 
- 	def admin?
-    	admin == true
-  	end
-
-
-  	def avgrate
-    	@average = 0
-      @ratings = Rating.where({'ratable_id': self.id, 'ratable_type': self.class})
-    	@ratings.each do |rating|
-    	  @average += rating.rate
-    	end
-    	@average =  @average.to_f/@ratings.count
-    	return @average
-  	end
-
+  def avgrate
+    @average = 0
+    @ratings = Rating.where({'ratable_id': self.id, 'ratable_type': self.class})
+      if @ratings.count == 0
+        return "No rated"
+      else
+        @ratings.each do |rating|
+        @average += rating.score
+        end
+        @average =  @average.to_f/@ratings.count
+        return @average
+      end
+  end
 
 end
