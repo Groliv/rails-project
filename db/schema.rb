@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150728035900) do
+ActiveRecord::Schema.define(version: 20150728194720) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id",      limit: 4
@@ -38,17 +38,28 @@ ActiveRecord::Schema.define(version: 20150728035900) do
   add_index "categories", ["name"], name: "index_categories_on_name", unique: true, using: :btree
 
   create_table "products", force: :cascade do |t|
-    t.integer  "user_id",     limit: 4
-    t.string   "title",       limit: 255
-    t.text     "description", limit: 65535
-    t.decimal  "price",                     precision: 10, scale: 2
-    t.string   "image_url",   limit: 255
-    t.datetime "created_at",                                         null: false
-    t.datetime "updated_at",                                         null: false
-    t.integer  "category_id", limit: 4
+    t.integer  "user_id",       limit: 4
+    t.string   "title",         limit: 255
+    t.text     "description",   limit: 65535
+    t.decimal  "price",                       precision: 10, scale: 2
+    t.string   "image_url",     limit: 255
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
+    t.integer  "category_id",   limit: 4
+    t.decimal  "startingprice",               precision: 10
+    t.decimal  "immediatprice",               precision: 10
+    t.boolean  "purchased"
+    t.datetime "bidenddate"
+    t.decimal  "minbid",                      precision: 10
   end
 
   add_index "products", ["user_id"], name: "index_products_on_user_id", using: :btree
+
+  create_table "products_users", id: false, force: :cascade do |t|
+    t.integer "user_id",    limit: 4,                null: false
+    t.integer "product_id", limit: 4,                null: false
+    t.decimal "amount",               precision: 10
+  end
 
   create_table "ratings", force: :cascade do |t|
     t.integer  "user_id",      limit: 4

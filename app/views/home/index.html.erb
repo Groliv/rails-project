@@ -14,8 +14,8 @@
              <div class="col-md-4 ">
              	<div class="prodlist"><h4><%=p.title -%></h4>
              	Seller : <%=p.user.firstname %><br>
-             	Price :<%= number_to_currency(p.price, precision: 2)-%><br>
-             	Rating :<%= p.avgrate -%><br>
+             	Price : <%= number_to_currency(p.price, precision: 2)-%><br>
+             	Rating : <%= p.avgrate -%><br>
              	<td><%= link_to 'More', p, :class=>"btn btn-primary btn-xs" %></td>
              </div></div>
              <% end -%>

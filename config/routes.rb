@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
 
-  resources :categories do
-  end
-
   devise_for :users
+
   resources :users, :only => [:show, :index] do
     patch "giveRight", on: :member
     resources :addresses
     resources :ratings
+  end
+
+  resources :categories do
   end
 
   resources :products do

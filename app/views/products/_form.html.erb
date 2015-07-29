@@ -21,8 +21,20 @@
       <div class="field">
         <%= f.text_area :description %>
       </div>
-      <div class="field" >
+       <div class="field" >
         <%= f.number_field :price, step: 0.01 %>
+      </div>
+      <div class="field" >
+        <%= f.number_field :startingprice, step: 0.01 %>
+      </div>
+      <div class="field" >
+        <%= f.number_field :minbid, step: 0.01 %>
+      </div>
+      <div class="field" >
+        <%= f.number_field :immediatprice, step: 0.01 %>
+      </div>
+      <div class="field" >
+        <%= f.date_field :bidenddate, step: 0.01 %>
       </div>
       <div class="field">
         <%= f.text_field :image_url %>

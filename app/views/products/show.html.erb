@@ -2,7 +2,7 @@
   <%= @product.title %>
 </h3>
 
-<div class="meta"> <%= @product.category.name %> - <%= @product.created_at.strftime("created at %B %d at %I:%M %p") %> by <strong><%= @product.user.firstname %></strong></div>
+<div class="meta"> <%= @product.category %> - <%= @product.created_at.strftime("created at %B %d at %I:%M %p") %> by <strong><%= @product.user.firstname %></strong></div>
 
 <div class="table_price_rating">
 <div class="price">

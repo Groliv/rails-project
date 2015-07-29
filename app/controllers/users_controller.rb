@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	before_action :authenticate_user!
-	before_action :set_user, only: [:show, :giveRight]
+	before_action :set_user, only: [:show, :giveRight, :indexbyuser]
 	respond_to :html, :json
 
 	def show
@@ -21,6 +21,15 @@ class UsersController < ApplicationController
 		@user.save
 		redirect_to @user
 	end
+
+	def indexbyuser
+		@products = Product.where("products.user_id = ? ", user.id).all
+	end
+
+	def indexbycurrent
+		@products = Product.where("products.user_id = ? ", current_user.id).all
+	end
+
 
 	private
 	def set_user

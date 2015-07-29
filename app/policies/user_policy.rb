@@ -14,7 +14,7 @@ class UserPolicy < ApplicationPolicy
     	@userp.present?
   	end
 
-  	def delete?
+  	def destroy?
     	@userp.present? || @userp.admin?
   	end
 end

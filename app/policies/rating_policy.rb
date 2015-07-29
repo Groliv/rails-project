@@ -14,7 +14,7 @@ class RatingPolicy < ApplicationPolicy
     	@user.present? 
   	end
 
-  	def delete?
+  	def destroy?
     	@user.present? && (@rating.user == @user || @user.admin? )
   	end
 

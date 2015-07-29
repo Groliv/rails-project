@@ -14,7 +14,7 @@ class ProductPolicy < ApplicationPolicy
     	@user.present? 
   	end
 
-  	def delete?
+  	def destroy?
     	@user.present? && (@product.user == @user || @user.admin? )
   	end
 
