@@ -22,7 +22,7 @@
 		  			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%=current_user.firstname%>'s products <span class="caret"></span></a>
 		  			<ul class="dropdown-menu">
 			  			<% if user_signed_in? && current_user.products.count != 0 %>
-						<li><%= link_to ""+current_user.firstname+"\'s sellings", product_path(current_user), :method => :get %></li> 
+						<li><%= link_to ""+current_user.firstname+"\'s sellings", user_path(current_user), :method => :get %></li> 
 			  			<% end %>
 			  			<li><%= link_to ""+current_user.firstname+"\'s buyings", product_path(current_user), :method => :get %></li> 
 			  			<li><%= link_to ""+current_user.firstname+"\'s bidings", product_path(current_user), :method => :get %></li>

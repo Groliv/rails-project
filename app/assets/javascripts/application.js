@@ -12,8 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
+//= require autocomplete-rails
 //= require bootstrap
-//= require bootstrap-sprockets
-//= require typeahead.bundle
+// require bootstrap-sprockets
+// require bootstrap3-typeahead.min
+// require bootstrap3-autocomplete-input.min
+// require typeahead.bundle
 //= require turbolinks
 //= require_tree .

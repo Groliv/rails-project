@@ -2,7 +2,16 @@ class Product < ActiveRecord::Base
 	belongs_to	:user
 	belongs_to	:category
 	has_many	:ratings,	as: :ratable,	dependent: :destroy
-	has_many	:products_users
+	has_many	:biddings,  dependent: :destroy
+	accepts_nested_attributes_for :biddings
+
+	after_initialize do
+  		if self.new_record?
+    		# values will be available for new record forms.
+    		self.purchased = false 
+    		self.price = self.minbid
+  		end
+	end
 
 	def avgrate
 		@average = 0
@@ -19,13 +28,19 @@ class Product < ActiveRecord::Base
 	end
 
 	def autobid
-	 	self.price = self.price + self.bidmin
-	end 
+		puts "self.minbid :" + self.minbid.to_s
+	 	self.price = self.price + self.minbid
+	end  
 
-	def addbid
-		@users = User.join()
-		@user = User.where()
-	 	self.price = self.price + amount
-	end 
+	def purchased?
+		self.purchased = true
+	end
+
+	def prixmaxi
+		if self.amount >= immediatprice || self.price >= immediatprice
+			self.purchased?
+		end
+	end
+
 
 end

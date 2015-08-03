@@ -2,18 +2,18 @@
 	<h3>Our products in the category : <%= @category.name %></h3>
   		<div class="row" >
 			<% @prods[0,8].each do |p| %>
+            
              <div class="col-md-4 ">
              	<div class="prodlist"><h4><%=p.title -%></h4>
              	Seller : <%=p.user.firstname %><br>
-             	Price :<%= number_to_currency(p.price, precision: 2)-%><br>
+             	Current Price :<%= number_to_currency(p.price, precision: 2)-%><br>
+                Immediat price :<%= number_to_currency(p.immediatprice, precision: 2)-%><br>
+                Bid automatic :<%= number_to_currency(p.minbid, precision: 2)-%><br>
+                End of bidding :<%= p.bidenddate -%><br>
+
              	Rating :<%= p.avgrate -%><br>
              	<td><%= link_to 'More', p, :class=>"btn btn-primary btn-xs" %></td>
              </div></div>
              <% end -%>
 		</div>
 </div>	
-
-
-
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>

@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
-	before_action :authenticate_user!
-	before_action :set_product, only: [:edit, :update, :destroy]
+	before_action :authenticate_user!, :except => [:price, :index, :show]
+	before_action :set_product, only: [:minbidded, :immediat, :edit, :update, :destroy]
 
 
 	# GET /products
@@ -10,32 +10,49 @@ class ProductsController < ApplicationController
 	end
 
 
-  # GET /products/1
-  # GET /products/1.json
-  def show
-	  @product = Product.find(params[:id])
-	  @ratings = Rating.where({"ratable_id": @product.id, "ratable_type": Product}).all
-	  @rating = Rating.new
-  end
+	# GET /products/1
+	# GET /products/1.json
+	def show
+		@product = Product.find(params[:id])
+		@ratings = Rating.where({"ratable_id": @product.id, "ratable_type": Product}).all
+		@rating = Rating.new
+		@biddings = Bidding.where({"product_id": @product.id})
+		@bidding = Bidding.new
+	end
 
-  # GET /products/new
-  def new
-	@categories = Category.all
-	@product = Product.new
-	authorize @product
-  end
+	# GET /products/new
+	def new
+		@categories = Category.all
+		@product = Product.new
+		authorize @product
+	end
 
-  # GET /products/1/edit
-  def edit
-	  @categories = Category.all
-	  authorize @product
-  end
+	def minbidded
+		@product.autobid
+		@product.save
+		puts "new price : " + @product.price.to_s
+		redirect_to @product, notice: 'Product was successfully updated with your bidding'
+	end
+
+	def immediat
+		@product.price = @product.immediatprice
+		@product.save
+		@product.purchased?
+		redirect_to @product, notice: 'Product was successfully updated with your bidding'
+	end
+
+	# GET /products/1/edit
+	def edit
+		@categories = Category.all
+		authorize @product
+	end
 
   # POST /products
   # POST /products.json
   def create
 	@product = Product.new(product_params)
 	@product.user = current_user
+	set_price 
 	authorize @product
 	respond_to do |format|
 	  if @product.save
@@ -72,16 +89,20 @@ class ProductsController < ApplicationController
 			format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
 			format.json { head :no_content }
 		end
-  end
+	end
 
   private
 	# Use callbacks to share common setup or constraints between actions.
 	def set_product
-	  if user_signed_in? && Product.where(:user_id => current_user.id).count == 0
-		redirect_to user_url, flash: {:notice => "You have no product registered, create the first !"}        
-	  else
-		@product = Product.find(params[:id])
-	  end
+		if user_signed_in? && Product.where(:user_id => current_user.id).count == 0
+			redirect_to user_url, flash: {:notice => "You have no product registered, create the first !"}        
+		else
+			@product = Product.find(params[:id])
+		end
+	end
+
+	def set_price
+			@product.price = @product.startingprice
 	end
 
 	# Never trust parameters from the scary internet, only allow the white list through.

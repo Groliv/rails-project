@@ -1,18 +1,23 @@
 Rails.application.routes.draw do
 
   devise_for :users
-
+ 
   resources :users, :only => [:show, :index] do
     patch "giveRight", on: :member
     resources :addresses
     resources :ratings
+    resources :biddings
   end
 
   resources :categories do
+    get :autocomplete_category_name, :on => :collection
   end
 
   resources :products do
+    patch "minbidded", on: :member
+    patch "immediat", on: :member
     resources :ratings
+    resources :biddings
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

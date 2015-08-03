@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 	has_many	:products,	dependent: :destroy
 	has_many	:ratings,	as: :ratable, dependent: :destroy
 	accepts_nested_attributes_for	:addresses,	allow_destroy: true
-	has_many	:products_users
+	has_many	:biddings, dependent: :destroy
 
   def admin?
 	admin == true

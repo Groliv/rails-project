@@ -9,6 +9,8 @@ class UsersController < ApplicationController
 		@addresse = Addresse.new
 		@ratings = Rating.where({"ratable_id": @user.id, "ratable_type": User}).all
 		@rating = Rating.new
+		@biddings = Bidding.where({"user_id": @user.id})
+		@bid = Bidding.new
 	end
 
 	def index
@@ -23,11 +25,13 @@ class UsersController < ApplicationController
 	end
 
 	def indexbyuser
-		@products = Product.where("products.user_id = ? ", user.id).all
+		@products = Product.where("products.user_id = ? ", @user.id).all
+		redirect_to @user
 	end
 
 	def indexbycurrent
 		@products = Product.where("products.user_id = ? ", current_user.id).all
+		redirect_to current_user
 	end
 
 

@@ -1,34 +1,60 @@
 <div class="container">
-<p>
-<strong>Firstname:</strong>
-<%= @user.firstname %>
-</p>
 
-<p>
-<strong>Lastname:</strong>
-<%= @user.lastname %>
-</p>
 
-<p><strong>Rating:</strong>
-<%= @user.avgrate %></p>
-<p>
+<!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal">
+    <%= @user.firstname %> Infos
+</button>
 
-<p>
-<strong>Email:</strong>
-<%= @user.email %>
-</p>
+<!-- Modal -->
+<div id="myModal" tabindex="-1" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
-<p>
-<strong>Role:</strong>
-<% if true == @user.admin %>Admin <% end %>
-<% if false == @user.admin %>User <% end %>
-</p>
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><%= @user.firstname %> informations</h4>
+      </div>
+      <div class="modal-body">
+        <p>
+        <strong>Firstname:</strong>
+        <%= @user.firstname %>
+        </p>
 
-<% if current_user.admin? && !@user.admin? %>
-	<%= bootstrap_form_for(@user, url: giveRight_user_path(@user)) do |u| %>
-    	<%= u.submit "Add Right" %>
- 	<% end %>
- <% end %>
+        <p>
+        <strong>Lastname:</strong>
+        <%= @user.lastname %>
+        </p>
+
+        <p><strong>Rating:</strong>
+        <%= @user.avgrate %>
+        </p>
+
+        <p>
+        <strong>Email:</strong>
+        <%= @user.email %>
+        </p>
+
+        <p>
+        <strong>Role:</strong>
+        <% if true == @user.admin %>Admin <% end %>
+        <% if false == @user.admin %>User <% end %>
+        </p>
+
+        <% if current_user.admin? && !@user.admin? %>
+            <%= bootstrap_form_for(@user, url: giveRight_user_path(@user)) do |u| %>
+                <%= u.submit "Add Right" %>
+            <% end %>
+         <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
  <div class="container-fluid">
  <% if @user.products.count != 0 %>
@@ -38,7 +64,10 @@
              <div class="col-md-4 ">
              	<div class="prodlist"><h4><%=p.title -%></h4>
              	Category : <%=p.category %><br>
-             	Price :<%= number_to_currency(p.price, precision: 2)-%><br>
+             	current price :<%= number_to_currency(p.price, precision: 2)-%><br>
+              Immediat price :<%= number_to_currency(p.immediatprice, precision: 2)-%><br>
+              Bid automatic :<%= number_to_currency(p.minbid, precision: 2)-%><br>
+              End of bidding :<%= p.bidenddate -%><br>
              	Rating :<%= p.avgrate -%><br>
              	<td><%= link_to 'More', p, :class=>"btn btn-primary btn-xs" %></td>
              </div></div>

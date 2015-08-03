@@ -1,0 +1,22 @@
+<%= bootstrap_form_for(@bidding, as: :bidding, url: product_biddings_path(@product.id), html: { method: :post }) do |b| %>
+  <% if @bidding.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bidding.errors.count, "error") %> prohibited this bidding from being saved:</h2>
+
+      <ul>
+      <% @bidding.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+  <h3>Choose the amount for bidding over the current price</h3>
+      <div class="field" >
+        <%= b.number_field :amount, step: 0.01 %>
+      </div>
+      <div class="actions">
+        <%= b.submit %>
+      </div>
+  </div>
+<% end %>

@@ -14,8 +14,15 @@ class ProductPolicy < ApplicationPolicy
     	@user.present? 
   	end
 
+    def minbidded
+      @user.present? && @user != @product.user
+    end
+
+    def immediat
+      @user.present? && @user != @product.user
+    end
+
   	def destroy?
     	@user.present? && (@product.user == @user || @user.admin? )
   	end
-
 end
