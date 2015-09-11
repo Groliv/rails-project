@@ -19,7 +19,6 @@ class BiddingsController < ApplicationController
 
 	def create
 		@bidding = Bidding.new(bidding_params)
-		authorize @bidding
 		@product = Product.find(params[:product_id])
 		@bidding.user = current_user
 		@bidding.product = @product

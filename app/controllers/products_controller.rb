@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
 	before_action :authenticate_user!, :except => [:price, :index, :show]
-	before_action :set_product, only: [:minbidded, :immediat, :edit, :update, :destroy]
+	before_action :set_product, only: [:edit, :update, :destroy]
 
 
 	# GET /products
@@ -28,6 +28,7 @@ class ProductsController < ApplicationController
 	end
 
 	def minbidded
+		@product = Product.find(params[:id])
 		@product.autobid
 		@product.save
 		puts "new price : " + @product.price.to_s
@@ -35,6 +36,7 @@ class ProductsController < ApplicationController
 	end
 
 	def immediat
+		@product = Product.find(params[:id])
 		@product.price = @product.immediatprice
 		@product.save
 		@product.purchased?

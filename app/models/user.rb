@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
 
   def avgrate
 	@average = 0
-	@ratings = Rating.where({'ratable_id': self.id, 'ratable_type': self.class})
+	@ratings = Rating.where({'ratable_id'=>self.id, 'ratable_type'=>self.class})
 	  if @ratings.count == 0
 		return "No rated"
 	  else

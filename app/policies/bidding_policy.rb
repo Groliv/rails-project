@@ -3,15 +3,15 @@ class BiddingPolicy < ApplicationPolicy
 
 	def initialize(product, bidding)
 		@user = user
-    	@bidding = bidding
+    @bidding = bidding
 	end
 
 	def new?
     	@user.present? && @user != @bidding.product.user
-  	end
+  end
 
-  	def create?
+  def create?
     	@user.present? && @user != @bidding.product.user
-  	end
+	end
 
 end

@@ -49,10 +49,10 @@ ActiveRecord::Schema.define(version: 20150729005429) do
     t.integer  "user_id",       limit: 4
     t.string   "title",         limit: 255
     t.text     "description",   limit: 65535
-    t.decimal  "price",                       precision: 10, scale: 2
+    t.decimal  "price",                       precision: 10
     t.string   "image_url",     limit: 255
-    t.datetime "created_at",                                           null: false
-    t.datetime "updated_at",                                           null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
     t.integer  "category_id",   limit: 4
     t.decimal  "startingprice",               precision: 10
     t.decimal  "immediatprice",               precision: 10
